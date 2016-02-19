@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <uexplugins>
     <plugin
-        uexName="uexInAppPurchase" version="3.0.0" build="1">
+        uexName="uexInAppPurchase" version="3.0.0" build=“1”>
         <info>1:iOS内购插件</info>
         <build>0:iOS内购插件 系统功能插件</build>
     </plugin>

@@ -25,12 +25,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		094A058C1C574F480014AFDA /* EUExBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EUExBase.h; path = EUExInAppPurchase/engineHeader/EUExBase.h; sourceTree = SOURCE_ROOT; };
-		094A058D1C574F480014AFDA /* EUExBaseDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EUExBaseDefine.h; path = EUExInAppPurchase/engineHeader/EUExBaseDefine.h; sourceTree = SOURCE_ROOT; };
-		094A058E1C574F480014AFDA /* EUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EUtility.h; path = EUExInAppPurchase/engineHeader/EUtility.h; sourceTree = SOURCE_ROOT; };
 		094E19921C411582008AB12B /* libuexInAppPurchase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuexInAppPurchase.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		094E19951C411582008AB12B /* EUExInAppPurchase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EUExInAppPurchase.h; sourceTree = "<group>"; };
 		094E19971C411582008AB12B /* EUExInAppPurchase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EUExInAppPurchase.m; sourceTree = "<group>"; };
+		094E19A81C4116DC008AB12B /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
+		094E19A91C4116DC008AB12B /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
+		094E19AA1C4116DC008AB12B /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
 		094E19AD1C411738008AB12B /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		094E19AE1C411738008AB12B /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
 		094E19AF1C411738008AB12B /* MD5Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Digest.h; sourceTree = "<group>"; };
@@ -83,9 +83,9 @@
 		094E19A71C4116DC008AB12B /* engineHeader */ = {
 			isa = PBXGroup;
 			children = (
-				094A058C1C574F480014AFDA /* EUExBase.h */,
-				094A058D1C574F480014AFDA /* EUExBaseDefine.h */,
-				094A058E1C574F480014AFDA /* EUtility.h */,
+				094E19A81C4116DC008AB12B /* EUExBase.h */,
+				094E19A91C4116DC008AB12B /* EUExBaseDefine.h */,
+				094E19AA1C4116DC008AB12B /* EUtility.h */,
 			);
 			path = engineHeader;
 			sourceTree = "<group>";
@@ -261,6 +261,7 @@
 		094E199C1C411582008AB12B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CONFIGURATION_BUILD_DIR = $SRCROOT/uexInAppPurchase;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = uexInAppPurchase;
 				SKIP_INSTALL = YES;
@@ -270,6 +271,7 @@
 		094E199D1C411582008AB12B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CONFIGURATION_BUILD_DIR = $SRCROOT/uexInAppPurchase;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = uexInAppPurchase;
 				SKIP_INSTALL = YES;
