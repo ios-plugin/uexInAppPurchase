@@ -25,12 +25,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		094B043D1C77139F00E283CA /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
+		094B043E1C77139F00E283CA /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
+		094B043F1C77139F00E283CA /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
 		094E19921C411582008AB12B /* libuexInAppPurchase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuexInAppPurchase.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		094E19951C411582008AB12B /* EUExInAppPurchase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EUExInAppPurchase.h; sourceTree = "<group>"; };
 		094E19971C411582008AB12B /* EUExInAppPurchase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EUExInAppPurchase.m; sourceTree = "<group>"; };
-		094E19A81C4116DC008AB12B /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
-		094E19A91C4116DC008AB12B /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
-		094E19AA1C4116DC008AB12B /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
 		094E19AD1C411738008AB12B /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		094E19AE1C411738008AB12B /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
 		094E19AF1C411738008AB12B /* MD5Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Digest.h; sourceTree = "<group>"; };
@@ -53,10 +53,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		094B043C1C77139F00E283CA /* engineHeader */ = {
+			isa = PBXGroup;
+			children = (
+				094B043D1C77139F00E283CA /* EUExBase.h */,
+				094B043E1C77139F00E283CA /* EUExBaseDefine.h */,
+				094B043F1C77139F00E283CA /* EUtility.h */,
+			);
+			name = engineHeader;
+			path = EUExInAppPurchase/engineHeader;
+			sourceTree = "<group>";
+		};
 		094E19891C411582008AB12B = {
 			isa = PBXGroup;
 			children = (
-				094E19A71C4116DC008AB12B /* engineHeader */,
+				094B043C1C77139F00E283CA /* engineHeader */,
 				094E19941C411582008AB12B /* EUExInAppPurchase */,
 				094E19AB1C411708008AB12B /* sourceCode */,
 				094E19931C411582008AB12B /* Products */,
@@ -78,16 +89,6 @@
 				094E19971C411582008AB12B /* EUExInAppPurchase.m */,
 			);
 			path = EUExInAppPurchase;
-			sourceTree = "<group>";
-		};
-		094E19A71C4116DC008AB12B /* engineHeader */ = {
-			isa = PBXGroup;
-			children = (
-				094E19A81C4116DC008AB12B /* EUExBase.h */,
-				094E19A91C4116DC008AB12B /* EUExBaseDefine.h */,
-				094E19AA1C4116DC008AB12B /* EUtility.h */,
-			);
-			path = engineHeader;
 			sourceTree = "<group>";
 		};
 		094E19AB1C411708008AB12B /* sourceCode */ = {
