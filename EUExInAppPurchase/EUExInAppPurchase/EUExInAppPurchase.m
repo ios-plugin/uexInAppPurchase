@@ -27,6 +27,7 @@
     return self;
 }
 -(void)getProductList:(NSMutableArray *)inArguments {
+    NSLog(@"-----------------");
       NSString *jsonStr = nil;
       NSMutableDictionary*  jsonDict = [NSMutableDictionary dictionary];
         if (inArguments.count > 0) {
