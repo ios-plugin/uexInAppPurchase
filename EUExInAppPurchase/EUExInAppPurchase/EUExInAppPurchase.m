@@ -21,26 +21,25 @@
 @implementation EUExInAppPurchase
 -(id)initWithBrwView:(EBrowserView *) eInBrwView {
     if (self = [super initWithBrwView:eInBrwView]) {
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        
         
     }
     return self;
 }
 -(void)getProductList:(NSMutableArray *)inArguments {
-    NSLog(@"-----------------");
-      NSString *jsonStr = nil;
-      NSMutableDictionary*  jsonDict = [NSMutableDictionary dictionary];
-        if (inArguments.count > 0) {
-            jsonStr = [inArguments objectAtIndex:0];
-         jsonDict = [jsonStr JSONValue];//将JSON类型的字符串转化为可变字典
-    
-        }else{
-            return;
-        }
+    NSString *jsonStr = nil;
+    NSMutableDictionary*  jsonDict = [NSMutableDictionary dictionary];
+    if (inArguments.count > 0) {
+        jsonStr = [inArguments objectAtIndex:0];
+        jsonDict = [jsonStr JSONValue];//将JSON类型的字符串转化为可变字典
+        
+    }else{
+        return;
+    }
     NSArray *productArr = [jsonDict objectForKey:@"productIDs"];
     //定义要获取的产品标识集合
     NSSet *sets=[NSSet setWithArray:productArr];
-   // NSSet *sets=[NSSet setWithObjects:kProductID1,kProductID2,kProductID3, nil];
+    // NSSet *sets=[NSSet setWithObjects:kProductID1,kProductID2,kProductID3, nil];
     //定义请求用于获取产品
     SKProductsRequest *productRequest=[[SKProductsRequest alloc]initWithProductIdentifiers:sets];
     //设置代理,用于获取产品加载状态
@@ -76,25 +75,27 @@
 -(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
     //保存有效的产品
     NSMutableArray *procuctsArr=[NSMutableArray array];
+    self.productsDic = [NSMutableDictionary dictionary];
     [response.products enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SKProduct *product=obj;
-//                 NSLog(@"%@",product.localizedDescription);
-//                 NSLog(@"%@",product.localizedTitle);
-//                 NSLog(@"%@",product.price);
-//                 NSLog(@"%@",product.productIdentifier);
+        //                 NSLog(@"%@",product.localizedDescription);
+        //                 NSLog(@"%@",product.localizedTitle);
+        //                 NSLog(@"%@",product.price);
+        //                 NSLog(@"%@",product.productIdentifier);
         NSString *price = [NSString stringWithFormat:@"%@",product.price];
         NSDictionary *dic = @{@"productIdentifier":product.productIdentifier,@"localizedTitle":product.localizedTitle,@"price":price,@"localizedDescription":product.localizedDescription};
         [self.productsDic setObject:product forKey:product.productIdentifier];
         [procuctsArr addObject:dic];
-            }];
+    }];
     NSString *jsonStr = nil;
     if (procuctsArr.count > 0) {
-       jsonStr = [procuctsArr JSONFragment];
+        jsonStr = [procuctsArr JSONFragment];
     }
+    NSLog(@"无效商品列表 ：%@",response.invalidProductIdentifiers);
     //返回产品数据给前端
     NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.cbGetProductList('%@');",jsonStr];
     [EUtility brwView:meBrwView evaluateScript:jsString];
-
+    
 #warning 在这儿把服务器的数据返回给前端，产品列表接口
 }
 
@@ -110,13 +111,14 @@
     }else{
         return;
     }
-
+    
     NSString *productIdentifier =[jsonDict objectForKey:@"productID"];
     BOOL appStoreVerifyUR = [[jsonDict objectForKey:@"appStoreVerifyURL"] boolValue];
     self.verifyURL = appStoreVerifyUR? @"https://buy.itunes.apple.com/verifyReceipt":@"https://sandbox.itunes.apple.com/verifyReceipt";
     SKProduct *product=self.productsDic[productIdentifier];
     //NSString *str = nil;
     if (product) {
+        
         NSString *str = @"开始购买";
         NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.onPurchaseState('%@');",str];
         [EUtility brwView:meBrwView evaluateScript:jsString];
@@ -128,27 +130,30 @@
         [EUtility brwView:meBrwView evaluateScript:jsString];
     }
     
-   
     
-    }
+    
+}
 
 -(void)purchaseProduct:(SKProduct *)product{
-        //创建产品支付对象
-        SKPayment *payment=[SKPayment paymentWithProduct:product];
-        //支付队列，将支付对象加入支付队列就形成一次购买请求
-        if (![SKPaymentQueue canMakePayments]) {
-            NSLog(@"用户禁止应用内付费购买");
-            NSString *str = @"用户禁止应用内付费购买";
-            NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.onSettingState('%@');",str];
-            [EUtility brwView:meBrwView evaluateScript:jsString];
-            return;
-        }
-        SKPaymentQueue *paymentQueue=[SKPaymentQueue defaultQueue];
-        //添加都支付队列，开始请求支付
-    
-        [paymentQueue addPayment:payment];
+    //创建产品支付对象
+    SKPayment *payment=[SKPayment paymentWithProduct:product];
+    //支付队列，将支付对象加入支付队列就形成一次购买请求
+    if (![SKPaymentQueue canMakePayments]) {
+        NSLog(@"用户禁止应用内付费购买");
+        NSString *str = @"用户禁止应用内付费购买";
+        NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.onSettingState('%@');",str];
+        [EUtility brwView:meBrwView evaluateScript:jsString];
+        return;
     }
-   
+    //
+    SKPaymentQueue *paymentQueue=[SKPaymentQueue defaultQueue];
+    //添加都支付队列，开始请求支付
+    [paymentQueue addPayment:payment];
+    self.isShow = YES;
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    
+}
+
 
 #pragma mark - SKPaymentQueue监听方法
 /**
@@ -158,34 +163,47 @@
  *  @param transactions 交易数组，里面存储了本次请求的所有交易对象
  */
 -(void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions{
-     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    self.dic = [NSMutableDictionary dictionary];
+    
     [transactions enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-       SKPaymentTransaction *paymentTransaction =obj;
-       
-       if (paymentTransaction.transactionState ==SKPaymentTransactionStatePurchased){//已购买成功
-//            NSLog(@"交易\"%@\"成功.",paymentTransaction.payment.productIdentifier);
-           dic[@"productIdentifier"]= paymentTransaction.payment.productIdentifier ;
-           dic[@"quantity"] = [NSString stringWithFormat:@"%ld",(long)paymentTransaction.payment.quantity];
-           //dic[@"transactionState"]  =
-           dic[@"transactionDate"] = [NSString stringWithFormat:@"%@",paymentTransaction.transactionDate];
-           dic[@"transactionIdentifier"] = paymentTransaction.transactionIdentifier;
-           dic[@"transactionState"] = @"购买成功";
+        SKPaymentTransaction *paymentTransaction =obj;
+        
+        if (paymentTransaction.transactionState ==SKPaymentTransactionStatePurchased){//已购买成功
+            //            NSLog(@"交易\"%@\"成功.",paymentTransaction.payment.productIdentifier);
+            self.dic[@"productIdentifier"]= paymentTransaction.payment.productIdentifier ;
+            self.dic[@"quantity"] = [NSString stringWithFormat:@"%ld",(long)paymentTransaction.payment.quantity];
+            //dic[@"transactionState"]  =
+            self.dic[@"transactionDate"] = [NSString stringWithFormat:@"%@",paymentTransaction.transactionDate];
+            self.dic[@"transactionIdentifier"] = paymentTransaction.transactionIdentifier;
+            self.dic[@"transactionState"] = @"购买成功";
+            if (self.isShow) {
+                NSString *jsonStr = [self.dic JSONFragment];
+                NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.onTransactionState('%@');",jsonStr];
+                [EUtility brwView:meBrwView evaluateScript:jsString];
+            }
+            self.isShow = NO;
             //购买成功后进行验证
             [self verifyPurchaseWithPaymentTransaction];
             //结束支付交易
-           [queue finishTransaction:paymentTransaction];
-       }else if(paymentTransaction.transactionState==SKPaymentTransactionStateRestored){//恢复成功，对于非消耗品才能恢复,如果恢复成功则transaction中记录的恢复的产品交易
-//            NSLog(@"恢复交易\"%@\"成功.",paymentTransaction.payment.productIdentifier);
-           dic[@"transactionDate"] = [NSString stringWithFormat:@"%@",paymentTransaction.transactionDate];
-           dic[@"transactionIdentifier"] = paymentTransaction.transactionIdentifier;
-           dic[@"originalTransaction"] = @{@"productIdentifier":paymentTransaction.originalTransaction.payment.productIdentifier,@"quantity":[NSString stringWithFormat:@"%ld",(long)paymentTransaction.originalTransaction.payment.quantity],@"transactionDate":[NSString stringWithFormat:@"%@",paymentTransaction.originalTransaction.transactionDate]};
-           dic[@"productIdentifier"]= paymentTransaction.payment.productIdentifier ;
-           dic[@"quantity"] = [NSString stringWithFormat:@"%ld",(long)paymentTransaction.payment.quantity];
-            dic[@"transactionState"] = @"恢复成功";
-           [queue finishTransaction:paymentTransaction];//结束支付交易
-           
+            [queue finishTransaction:paymentTransaction];
+        }else if(paymentTransaction.transactionState==SKPaymentTransactionStateRestored){//恢复成功，对于非消耗品才能恢复,如果恢复成功则transaction中记录的恢复的产品交易
+            //            NSLog(@"恢复交易\"%@\"成功.",paymentTransaction.payment.productIdentifier);
+            self.dic[@"transactionDate"] = [NSString stringWithFormat:@"%@",paymentTransaction.transactionDate];
+            self.dic[@"transactionIdentifier"] = paymentTransaction.transactionIdentifier;
+            self.dic[@"originalTransaction"] = @{@"productIdentifier":paymentTransaction.originalTransaction.payment.productIdentifier,@"quantity":[NSString stringWithFormat:@"%ld",(long)paymentTransaction.originalTransaction.payment.quantity],@"transactionDate":[NSString stringWithFormat:@"%@",paymentTransaction.originalTransaction.transactionDate]};
+            self.dic[@"productIdentifier"]= paymentTransaction.payment.productIdentifier ;
+            self.dic[@"quantity"] = [NSString stringWithFormat:@"%ld",(long)paymentTransaction.payment.quantity];
+            self.dic[@"transactionState"] = @"恢复成功";
+            if (self.isShow) {
+                NSString *jsonStr = [self.dic JSONFragment];
+                NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.onTransactionState('%@');",jsonStr];
+                [EUtility brwView:meBrwView evaluateScript:jsString];
+            }
+            self.isShow = NO;
+            [queue finishTransaction:paymentTransaction];//结束支付交易
+            
         }else if(paymentTransaction.transactionState==SKPaymentTransactionStateFailed){
-          
+            
             //dic[@"quantity"] = [NSString stringWithFormat:@"%ld",(long)paymentTransaction.payment.quantity];
             NSString *errorStr = nil;
             if (paymentTransaction.error.code==SKErrorPaymentCancelled) {
@@ -193,15 +211,20 @@
             }else{
                 errorStr = [NSString stringWithFormat:@"%ld",paymentTransaction.error.code];
             }
-            dic[@"error"] = errorStr;
-            dic[@"productIdentifier"]= paymentTransaction.payment.productIdentifier ;
-            dic[@"transactionState"] = @"购买失败";
+            self.dic[@"error"] = errorStr;
+            self.dic[@"productIdentifier"]= paymentTransaction.payment.productIdentifier ;
+            self.dic[@"transactionState"] = @"购买失败";
+            if (self.isShow) {
+                NSString *jsonStr = [self.dic JSONFragment];
+                NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.onTransactionState('%@');",jsonStr];
+                [EUtility brwView:meBrwView evaluateScript:jsString];
+            }
+            self.isShow = NO;
+            
         }
         
     }];
-    NSString *jsonStr = [dic JSONFragment];
-    NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.onTransactionState('%@');",jsonStr];
-    [EUtility brwView:meBrwView evaluateScript:jsString];
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
 }
 -(void)verifyPurchaseWithPaymentTransaction{
     //从沙盒中获取交易凭证并且拼接成请求体数据
@@ -231,12 +254,14 @@
     NSString *jsonStr = [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
     NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.cbGetVerifyInfo('%@');",jsonStr];
     [EUtility brwView:meBrwView evaluateScript:jsString];
-   
+    
     
 }
 //**********************************************************************
 -(void)restorePurchase:(NSMutableArray *)inArguments{
     SKPaymentQueue *paymentQueue=[SKPaymentQueue defaultQueue];
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    self.isShow = YES;
     //恢复所有非消耗品
     [paymentQueue restoreCompletedTransactions];
 }
@@ -244,7 +269,7 @@
     NSString *str = nil;
     if (error) {
         NSLog(@"恢复失败:%@",error);
-    str = [NSString stringWithFormat:@"恢复失败:%@",error];
+        str = [NSString stringWithFormat:@"恢复失败:%@",error];
     }
     NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.onRestoreState('%@');",str];
     [EUtility brwView:meBrwView evaluateScript:jsString];
@@ -257,6 +282,6 @@
     [EUtility brwView:meBrwView evaluateScript:jsString];
 }
 -(void)dealloc{
-    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+    
 }
 @end

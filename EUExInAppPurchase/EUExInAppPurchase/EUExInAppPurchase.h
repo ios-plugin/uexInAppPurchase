@@ -11,5 +11,8 @@
 #import <StoreKit/StoreKit.h>
 @interface EUExInAppPurchase : EUExBase<SKProductsRequestDelegate,SKPaymentTransactionObserver>
 @property (strong,nonatomic) NSMutableDictionary *productsDic;//有效的产品
+@property (strong,nonatomic) NSMutableDictionary *dic;
 @property (strong,nonatomic) NSString *verifyURL;
+@property BOOL isShow;
 @end
+
