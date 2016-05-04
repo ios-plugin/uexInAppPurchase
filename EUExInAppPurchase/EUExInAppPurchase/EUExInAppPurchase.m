@@ -118,7 +118,6 @@
     SKProduct *product=self.productsDic[productIdentifier];
     //NSString *str = nil;
     if (product) {
-        
         NSString *str = @"开始购买";
         NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.onPurchaseState('%@');",str];
         [EUtility brwView:meBrwView evaluateScript:jsString];
@@ -251,10 +250,34 @@
         [EUtility brwView:meBrwView evaluateScript:jsString];
         return;
     }
-    NSString *jsonStr = [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
+#warning 已修改
+    NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+    NSString *jsonStr = [dic JSONFragment];
+    NSLog(@"responseData:%@",dic);
     NSString *jsString = [NSString stringWithFormat:@"uexInAppPurchase.cbGetVerifyInfo('%@');",jsonStr];
     [EUtility brwView:meBrwView evaluateScript:jsString];
-    
+    /*------------*/
+//    NSURLSession *session = [NSURLSession sharedSession];
+//    NSURLSessionDataTask *task = [session dataTaskWithRequest:requestM completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        
+//    }];
+//    NSURLSessionDataTask *task = [session dataTaskWithURL:[NSURL URLWithString:bodyString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        /*data参数就是从网络上下载下来的数据
+//         这个数据是服务器把 字典/数组 根据JSON协议编码以后生成的. 拿到JSON数据以后, 我们要反编码 回到字典或者数组
+//         */
+//        //因为根据返回值类型, 可以看到是字典类型的
+//        //Serialization:序列化
+//        //参数2:options 代表当前data原始数据是什么类型
+//        //MutableContainers:代表原始数据是数组/字典
+//        NSError *err = nil;
+//        NSDictionary *responseObj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err];
+//        
+//        
+//        
+//    }];
+    //开始发送请求
+   // [task resume];
+    /*------------*/
     
 }
 //**********************************************************************

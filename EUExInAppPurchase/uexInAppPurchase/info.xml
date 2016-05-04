@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <uexplugins>
     <plugin
-        uexName="uexInAppPurchase" version="3.0.0" build=“2”>
-        <info>2:优化内购插件</info>
+        uexName="uexInAppPurchase" version="3.0.3" build="3">
+        <info>3:更新方法</info>
+        <build>2:优化内购插件</build>
         <build>1:iOS内购插件 系统功能插件</build>
         <build>0:iOS内购插件 系统功能插件</build>
     </plugin>
