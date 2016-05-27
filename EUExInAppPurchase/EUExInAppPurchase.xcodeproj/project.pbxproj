@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		094E19961C411582008AB12B /* EUExInAppPurchase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 094E19951C411582008AB12B /* EUExInAppPurchase.h */; };
+		093C844D1CEED6AA00BF4F1F /* uexIAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 093C844C1CEED6AA00BF4F1F /* uexIAPManager.m */; };
 		094E19981C411582008AB12B /* EUExInAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 094E19971C411582008AB12B /* EUExInAppPurchase.m */; };
 /* End PBXBuildFile section */
 
@@ -15,16 +15,17 @@
 		094E19901C411582008AB12B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
+			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				094E19961C411582008AB12B /* EUExInAppPurchase.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		093C844B1CEED6A000BF4F1F /* uexIAPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexIAPManager.h; sourceTree = "<group>"; };
+		093C844C1CEED6AA00BF4F1F /* uexIAPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexIAPManager.m; sourceTree = "<group>"; };
 		094B043D1C77139F00E283CA /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
 		094B043E1C77139F00E283CA /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
 		094B043F1C77139F00E283CA /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
@@ -94,6 +95,8 @@
 		094E19AB1C411708008AB12B /* sourceCode */ = {
 			isa = PBXGroup;
 			children = (
+				093C844B1CEED6A000BF4F1F /* uexIAPManager.h */,
+				093C844C1CEED6AA00BF4F1F /* uexIAPManager.m */,
 				094E19AC1C411738008AB12B /* JSON */,
 			);
 			name = sourceCode;
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				094E19981C411582008AB12B /* EUExInAppPurchase.m in Sources */,
+				093C844D1CEED6AA00BF4F1F /* uexIAPManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
