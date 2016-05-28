@@ -4,5 +4,6 @@
         <method name="getProductList"></method>
         <method name="purchase"></method>
         <method name="restorePurchase"></method>
+        <method name="canMakePay" sync = "true"></method>
     </plugin>
 </uexplugins>
