@@ -157,13 +157,13 @@
             dic[@"status"] = @2;// @"购买失败";
             dic[@"errorCode"] = @(paymentTransaction.error.code);
             dic[@"errorDescription"] = paymentTransaction.error.localizedDescription;
-            dic[@"productIdentifier"]= paymentTransaction.payment.productIdentifier ;
+            dic[@"productIdentifier"]= paymentTransaction.payment.productIdentifier;
             [self callBackJsonWithFunction:@"onTransactionState" parameter:dic];
             [[SKPaymentQueue defaultQueue] finishTransaction:paymentTransaction];
         }
         
     }];
-    [[SKPaymentQueue defaultQueue] removeTransactionObserver:[uexIAPManager sharedInstance]];
+   
 }
 -(void)verifyPurchaseWithPaymentTransaction{
     //从沙盒中获取交易凭证并且拼接成请求体数据
