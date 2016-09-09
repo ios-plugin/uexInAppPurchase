@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
-#import "EUExBase.h"
+#import <AppCanKit/AppCanKit.h>
+@protocol CallBackDelegate <NSObject>
+-(void)callBackJsonWithFunction:(NSString *)functionName parameter:(id)obj;
+@end
 @interface uexIAPManager : NSObject <SKProductsRequestDelegate,SKPaymentTransactionObserver>
 @property (strong,nonatomic) NSMutableDictionary *productsDic;//有效的产品
-@property (strong,nonatomic) EBrowserView *meBrwView;
+@property (nonatomic, weak) id<CallBackDelegate> delegate;
 @property (strong,nonatomic) NSString *verifyURL;
-+ (id)sharedInstance;
--(void)initWithBView:(EBrowserView *)meBrwView;
--(void)getProductList:(NSSet *)sets;
+@property (nonatomic,strong) ACJSFunctionRef*func;
++ (instancetype)sharedInstance;
+-(void)getProductList:(NSSet *)sets Function:(ACJSFunctionRef*)func;
 -(void)purchaseProductID:(NSString *)productIdentifier verifyURL:(NSString *)verifyURL quantity:(NSInteger)quantity;
 -(void)restorePurchase;
 -(BOOL)canMakePay;

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EUExBase.h"
+#import <AppCanKit/AppCanKit.h>
 #import <StoreKit/StoreKit.h>
 @interface EUExInAppPurchase : EUExBase
 @end

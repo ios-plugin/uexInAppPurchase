@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		093C844D1CEED6AA00BF4F1F /* uexIAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 093C844C1CEED6AA00BF4F1F /* uexIAPManager.m */; };
 		094E19981C411582008AB12B /* EUExInAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 094E19971C411582008AB12B /* EUExInAppPurchase.m */; };
+		21709E031D825BCD00C863F8 /* AppCanKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21709E021D825BCD00C863F8 /* AppCanKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,21 +27,12 @@
 /* Begin PBXFileReference section */
 		093C844B1CEED6A000BF4F1F /* uexIAPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexIAPManager.h; sourceTree = "<group>"; };
 		093C844C1CEED6AA00BF4F1F /* uexIAPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexIAPManager.m; sourceTree = "<group>"; };
-		094B043D1C77139F00E283CA /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
 		094B043E1C77139F00E283CA /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
 		094B043F1C77139F00E283CA /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
 		094E19921C411582008AB12B /* libuexInAppPurchase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuexInAppPurchase.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		094E19951C411582008AB12B /* EUExInAppPurchase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EUExInAppPurchase.h; sourceTree = "<group>"; };
 		094E19971C411582008AB12B /* EUExInAppPurchase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EUExInAppPurchase.m; sourceTree = "<group>"; };
-		094E19AD1C411738008AB12B /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		094E19AE1C411738008AB12B /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
-		094E19AF1C411738008AB12B /* MD5Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Digest.h; sourceTree = "<group>"; };
-		094E19B01C411738008AB12B /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		094E19B11C411738008AB12B /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		094E19B21C411738008AB12B /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		094E19B31C411738008AB12B /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		094E19B41C411738008AB12B /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		094E19B51C411738008AB12B /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		21709E021D825BCD00C863F8 /* AppCanKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCanKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21709E031D825BCD00C863F8 /* AppCanKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +50,6 @@
 		094B043C1C77139F00E283CA /* engineHeader */ = {
 			isa = PBXGroup;
 			children = (
-				094B043D1C77139F00E283CA /* EUExBase.h */,
 				094B043E1C77139F00E283CA /* EUExBaseDefine.h */,
 				094B043F1C77139F00E283CA /* EUtility.h */,
 			);
@@ -95,28 +87,12 @@
 		094E19AB1C411708008AB12B /* sourceCode */ = {
 			isa = PBXGroup;
 			children = (
+				21709E021D825BCD00C863F8 /* AppCanKit.framework */,
 				093C844B1CEED6A000BF4F1F /* uexIAPManager.h */,
 				093C844C1CEED6AA00BF4F1F /* uexIAPManager.m */,
-				094E19AC1C411738008AB12B /* JSON */,
 			);
 			name = sourceCode;
 			path = EUExInAppPurchase/sourceCode;
-			sourceTree = "<group>";
-		};
-		094E19AC1C411738008AB12B /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				094E19AD1C411738008AB12B /* JSON.h */,
-				094E19AE1C411738008AB12B /* JSONParser.h */,
-				094E19AF1C411738008AB12B /* MD5Digest.h */,
-				094E19B01C411738008AB12B /* NSObject+SBJSON.h */,
-				094E19B11C411738008AB12B /* NSString+SBJSON.h */,
-				094E19B21C411738008AB12B /* SBJSON.h */,
-				094E19B31C411738008AB12B /* SBJsonBase.h */,
-				094E19B41C411738008AB12B /* SBJsonParser.h */,
-				094E19B51C411738008AB12B /* SBJsonWriter.h */,
-			);
-			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +243,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = $SRCROOT/uexInAppPurchase;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EUExInAppPurchase/sourceCode",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = uexInAppPurchase;
 				SKIP_INSTALL = YES;
@@ -277,6 +257,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = $SRCROOT/uexInAppPurchase;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EUExInAppPurchase/sourceCode",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = uexInAppPurchase;
 				SKIP_INSTALL = YES;
