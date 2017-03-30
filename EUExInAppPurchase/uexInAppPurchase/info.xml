@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <uexplugins>
     <plugin
-        uexName="uexInAppPurchase" version="3.0.4" build="4">
-        <info>4:新增接口canMakePay,废弃无用监听</info>
-        <build>3:更新方法</build>
-        <build>2:优化内购插件</build>
-        <build>1:iOS内购插件 系统功能插件</build>
-        <build>0:iOS内购插件 系统功能插件</build>
+        uexName="uexInAppPurchase" version="4.0.0" build="0">
+        <info>0:插件4.0</info>
     </plugin>
 </uexplugins>
