@@ -27,8 +27,6 @@
 /* Begin PBXFileReference section */
 		093C844B1CEED6A000BF4F1F /* uexIAPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uexIAPManager.h; sourceTree = "<group>"; };
 		093C844C1CEED6AA00BF4F1F /* uexIAPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexIAPManager.m; sourceTree = "<group>"; };
-		094B043E1C77139F00E283CA /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
-		094B043F1C77139F00E283CA /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
 		094E19921C411582008AB12B /* libuexInAppPurchase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuexInAppPurchase.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		094E19951C411582008AB12B /* EUExInAppPurchase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EUExInAppPurchase.h; sourceTree = "<group>"; };
 		094E19971C411582008AB12B /* EUExInAppPurchase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EUExInAppPurchase.m; sourceTree = "<group>"; };
@@ -47,22 +45,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		094B043C1C77139F00E283CA /* engineHeader */ = {
-			isa = PBXGroup;
-			children = (
-				094B043E1C77139F00E283CA /* EUExBaseDefine.h */,
-				094B043F1C77139F00E283CA /* EUtility.h */,
-			);
-			name = engineHeader;
-			path = EUExInAppPurchase/engineHeader;
-			sourceTree = "<group>";
-		};
 		094E19891C411582008AB12B = {
 			isa = PBXGroup;
 			children = (
-				094B043C1C77139F00E283CA /* engineHeader */,
 				094E19941C411582008AB12B /* EUExInAppPurchase */,
-				094E19AB1C411708008AB12B /* sourceCode */,
 				094E19931C411582008AB12B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,6 +64,7 @@
 		094E19941C411582008AB12B /* EUExInAppPurchase */ = {
 			isa = PBXGroup;
 			children = (
+				094E19AB1C411708008AB12B /* sourceCode */,
 				094E19951C411582008AB12B /* EUExInAppPurchase.h */,
 				094E19971C411582008AB12B /* EUExInAppPurchase.m */,
 			);
@@ -91,8 +78,7 @@
 				093C844B1CEED6A000BF4F1F /* uexIAPManager.h */,
 				093C844C1CEED6AA00BF4F1F /* uexIAPManager.m */,
 			);
-			name = sourceCode;
-			path = EUExInAppPurchase/sourceCode;
+			path = sourceCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,7 +107,7 @@
 		094E198A1C411582008AB12B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "杨广";
 				TargetAttributes = {
 					094E19911C411582008AB12B = {
@@ -172,8 +158,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -195,7 +183,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -215,8 +203,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -232,7 +222,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
