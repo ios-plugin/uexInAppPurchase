@@ -2,7 +2,7 @@
 <uexplugins>
     <plugin
         uexName="uexInAppPurchase" version="4.0.1" build="1">
-        <info>0: 修复bugs;purchase接口新增verifyStrategy参数;purchase接口支持function回调参数</info>
+        <info>1: 修复bugs;purchase接口新增verifyStrategy参数;purchase接口支持function回调参数</info>
         <build>0: 苹果内购插件</build>
     </plugin>
 </uexplugins>
