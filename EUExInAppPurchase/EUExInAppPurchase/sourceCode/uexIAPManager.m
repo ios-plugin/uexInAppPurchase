@@ -300,7 +300,7 @@ static NSMutableDictionary *parseTransaction(SKPaymentTransaction *transaction){
             url = [NSURL URLWithString:@"https://sandbox.itunes.apple.com/verifyReceipt"];
             break;
         case uexIAPReceiptVerifyStrategyProduction:
-            url = [NSURL URLWithString:@"https://sandbox.itunes.apple.com/verifyReceipt"];
+            url = [NSURL URLWithString:@"https://buy.itunes.apple.com/verifyReceipt"];
             break;
     }
     
